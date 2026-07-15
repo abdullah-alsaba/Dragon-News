@@ -1,5 +1,6 @@
 import {  Poppins } from "next/font/google";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -21,7 +22,10 @@ export default function RootLayout({ children }) {
       data-theme="light"
       className={` h-full antialiased`}
     >
-      <body className={`${poppins.variable} min-h-full flex flex-col`}>{children}</body>
+      <body className={`${poppins.variable} min-h-full flex flex-col`}>{children}
+        <ToastContainer
+        ></ToastContainer>
+      </body>
     </html>
   );
 }
