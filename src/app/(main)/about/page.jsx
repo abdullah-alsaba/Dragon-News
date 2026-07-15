@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Dragon News- About Us"
+  
+};
+
 const AboutPage = () => {
   return (
     <section className="w-11/12 mx-auto py-16">

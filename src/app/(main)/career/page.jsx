@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+
+export const metadata = {
+  title: "Dragon News- Career",
+};
+
+
 const CareerPage = () => {
   return (
     <section className="w-11/12 mx-auto py-16">
