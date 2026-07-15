@@ -29,7 +29,7 @@ const Navbar = () => {
           className="rounded-full"
         />
 
-        <Link href="/signin">
+        <Link href="/login">
           <button className="bg-[#403F3F] text-white px-7 py-3 font-semibold cursor-pointer">
             Login
           </button>
