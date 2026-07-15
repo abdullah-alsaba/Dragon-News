@@ -4,13 +4,17 @@ import Navbar from '@/components/shared/Navbar/Navbar';
 import React from 'react';
 
 const MainLayout = ({children}) => {
-    return <>
+    return (
+      <>
         <Header></Header>
-        <BreakingNews></BreakingNews>
-        <Navbar></Navbar>
+        <div className="w-11/12 mx-auto">
+          <BreakingNews />
+          <Navbar />
+        </div>
 
-        
-    {children}</>;
+        {children}
+      </>
+    );
 };
 
 export default MainLayout;
