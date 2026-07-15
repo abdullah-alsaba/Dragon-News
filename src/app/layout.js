@@ -11,7 +11,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "Dragon News",
-  description: "A online news site",
+  description: "A online news site"
 };
 
 export default function RootLayout({ children }) {
