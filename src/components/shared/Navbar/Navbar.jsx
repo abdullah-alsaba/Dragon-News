@@ -42,14 +42,17 @@ const Navbar = () => {
           />
 
           <Link href="/login">
-            <button className="bg-[#403F3F] text-white px-7 py-3 font-semibold cursor-pointer">
+            <button
+              className="bg-[#403F3F] text-white px-7 py-3 font-semibold cursor-pointer"
+              onClick={async () => await authClient.signOut()}
+            >
               Log Out
             </button>
           </Link>
         </div>
       ) : (
         <Link href="/login">
-          <button className="bg-[#403F3F] text-white px-7 py-3 font-semibold cursor-pointer">
+          <button className="bg-[#403F3F] text-white px-7 py-3 font-semibold mr-16 cursor-pointer">
             Login
           </button>
         </Link>
