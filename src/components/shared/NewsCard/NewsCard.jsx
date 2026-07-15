@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from "react-icons/fa";
 
-const NewsCard = ({ n }) => {
-  const { title, image_url, details, total_view, rating, author } = n;
+const NewsCard = ({ news }) => {
+  const { _id,title, image_url, details, total_view, rating, author } = news;
 
   return (
     <article className="border rounded-lg overflow-hidden bg-white mb-8">
@@ -11,8 +11,8 @@ const NewsCard = ({ n }) => {
       <div className="flex items-center justify-between bg-[#F3F3F3] px-5 py-4">
         <div className="flex items-center gap-3">
           <Image
-            src={author.img}
-            alt={author.name}
+            src={author?.img || "/default-user.png"}
+            alt={author?.name || "Author"}
             width={45}
             height={45}
             className="rounded-full"
@@ -22,7 +22,7 @@ const NewsCard = ({ n }) => {
             <h4 className="font-semibold text-[#403F3F]">{author.name}</h4>
 
             <p className="text-sm text-[#706F6F]">
-              {author.published_date.slice(0, 10)}
+              {author?.published_date?.slice(0, 10) || "No Date"}
             </p>
           </div>
         </div>
@@ -46,13 +46,12 @@ const NewsCard = ({ n }) => {
           height={450}
           className="w-full h-65 object-cover rounded-lg my-5"
         />
-
-        <p className="text-[#706F6F] leading-8">
+        <div className="text-[#706F6F] leading-8">
           {details.length > 250 ? (
             <>
               {details.slice(0, 250)}...
               <Link
-                href={`/news/${n._id}`}
+                href={`/news/${_id}`}
                 className="text-[#FF8C47] font-semibold ml-1"
               >
                 Read More
@@ -61,7 +60,7 @@ const NewsCard = ({ n }) => {
           ) : (
             details
           )}
-        </p>
+        </div>
       </div>
 
       {/* Footer */}
