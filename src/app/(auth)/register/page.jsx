@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, InputGroup } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,14 +25,21 @@ const RegisterPage = () => {
        
 
 
-    const { data:res, error } = await authClient.signUp.email({
+    const { data: res, error } = await authClient.signUp.email({
       name: name,
       email: email,
       password: password,
       image: photoURL,
-      callbackURL: "/",
+      callbackURL: "/login",
     });
         
+        if (error) {
+            toast.error(error.message)
+
+        }
+        if (res) {
+            toast.success("Sign Up successful")
+        }
         
   };
 

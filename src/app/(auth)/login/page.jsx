@@ -6,6 +6,8 @@ import { useState } from "react";
 
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, InputGroup } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,8 +18,23 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+              const { email, password } = data;
+
+      
+
+      const { data: res, error } = await authClient.signIn.email({
+        email: email,
+        password: password,
+        callbackURL: "/",
+      });
+
+      if (error) {
+          toast.error(error.message)
+      }
+      if (res) {
+          toast.success("Log In Successful")
+      }
   };
 
   return (
