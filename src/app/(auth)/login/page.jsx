@@ -1,23 +1,21 @@
 'use client'
-
-
-
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 
-export const metadata = {
-  title: "Dragon News - Log In"
-  
-};
 
 
 const LoginPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const onSubmit = (e) => {
-        e.preventDefault()
-        const formData= new FormData(e.target)
-        const newUser = Object.formEntries(FormData.entries())
-        console.log(newUser)
-}
+    const onSubmit = (data) => console.log(data);
+
+    
+
+   
 
 
   return (
@@ -29,7 +27,7 @@ const LoginPage = () => {
 
         <hr className="my-10 border-gray-200" />
 
-        <form className="space-y-7" onSubmit={onSubmit}>
+        <form className="space-y-7" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label className="block text-xl font-semibold text-[#403F3F] mb-3">
               Email address
@@ -37,10 +35,15 @@ const LoginPage = () => {
 
             <input
               type="email"
-              name="email"
+              {...register("email", { required: "Email is required" })}
               placeholder="Enter your email address"
               className="w-full h-16 bg-[#F3F3F3] px-6 outline-none rounded"
             />
+            {errors.email && (
+              <p className="text-red-500 font-semibold">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div>
@@ -50,10 +53,16 @@ const LoginPage = () => {
 
             <input
               type="password"
-              name="password"
+              {...register("password", { required: "Password is required" })}
               placeholder="Enter your password"
               className="w-full h-16 bg-[#F3F3F3] px-6 outline-none rounded"
             />
+
+            {errors.password && (
+              <p className="text-red-500 font-semibold">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           <button
