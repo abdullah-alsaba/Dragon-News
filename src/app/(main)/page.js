@@ -18,7 +18,7 @@ export default async function Home() {
 
   return (
     <div className="container mx-auto grid grid-cols-12 gap-6 my-8 px-30">
-      <AllCategories categories={categories} />
+      <AllCategories categories={categories} activeId={"01"} />
 
       <AllNews />
 
