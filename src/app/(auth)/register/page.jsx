@@ -8,9 +8,14 @@ import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, InputGroup } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+
+
 
 const RegisterPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  
+          const router = useRouter();
 
   const {
     register,
@@ -38,7 +43,10 @@ const RegisterPage = () => {
 
         }
         if (res) {
-            toast.success("Sign Up successful")
+            (toast.success("Sign Up successful"),
+              setTimeout(() => {
+                router.push("/");
+              }, 2000));
         }
         
   };
