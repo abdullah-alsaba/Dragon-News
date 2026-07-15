@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, InputGroup } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 const RegisterPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,8 +17,22 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+    const onSubmit = async (data) => {
+      
+        const { name, email, password, photoURL } = data
+        
+       
+
+
+    const { data:res, error } = await authClient.signUp.email({
+      name: name,
+      email: email,
+      password: password,
+      image: photoURL,
+      callbackURL: "/",
+    });
+        
+        
   };
 
   return (
