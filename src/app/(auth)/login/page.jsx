@@ -1,6 +1,23 @@
+'use client'
+
+
+
 import Link from "next/link";
 
+export const metadata = {
+  title: "Dragon News - Log In",
+  
+};
 const LoginPage = () => {
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        const formData= new FormData(e.target)
+        const newUser = Object.formEntries(FormData.entries())
+        console.log(newUser)
+}
+
+
   return (
     <div className="min-h-screen bg-[#F3F3F3] flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-3xl bg-white rounded-md p-14">
@@ -10,7 +27,7 @@ const LoginPage = () => {
 
         <hr className="my-10 border-gray-200" />
 
-        <form className="space-y-7">
+        <form className="space-y-7" onSubmit={onSubmit}>
           <div>
             <label className="block text-xl font-semibold text-[#403F3F] mb-3">
               Email address
@@ -18,6 +35,7 @@ const LoginPage = () => {
 
             <input
               type="email"
+              name="email"
               placeholder="Enter your email address"
               className="w-full h-16 bg-[#F3F3F3] px-6 outline-none rounded"
             />
@@ -30,6 +48,7 @@ const LoginPage = () => {
 
             <input
               type="password"
+              name="password"
               placeholder="Enter your password"
               className="w-full h-16 bg-[#F3F3F3] px-6 outline-none rounded"
             />
