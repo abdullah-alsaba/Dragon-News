@@ -5,9 +5,11 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Dragon News - Log In",
+  title: "Dragon News - Log In"
   
 };
+
+
 const LoginPage = () => {
 
     const onSubmit = (e) => {
