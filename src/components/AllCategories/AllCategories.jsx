@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const AllCategories = ({ categories, activeId }) => {
@@ -13,14 +14,19 @@ const AllCategories = ({ categories, activeId }) => {
             <button
               key={category.category_id}
               type="button"
-              className={`w-full text-left px-6 py-4 rounded-md transition-all duration-200
+              className={`w-full text-left px-6  rounded-md transition-all duration-200
                 ${
                   isActive
                     ? "bg-[#E7E7E7] text-[#D72050] font-semibold"
                     : "text-[#706F6F] hover:bg-[#F3F3F3] hover:text-[#D72050]"
                 }`}
             >
-              {category.category_name}
+              <Link
+                href={`/category/${category.category_id}`}
+                className="block py-4 "
+              >
+                {category.category_name}
+              </Link>
             </button>
           );
         })}
