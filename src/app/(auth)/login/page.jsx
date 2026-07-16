@@ -8,9 +8,16 @@ import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, InputGroup } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { BsGoogle } from "react-icons/bs";
 
 const LoginPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+
+  const handelGoogleLogIn = async () => {
+   const data = await authClient.signIn.social({
+     provider: "google",
+   });
+  }
 
   const {
     register,
@@ -147,10 +154,20 @@ const LoginPage = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full h-16 bg-[#403F3F] text-white text-2xl font-semibold hover:bg-black transition"
+            className="w-full h-16 bg-[#403F3F] text-white text-2xl font-semibold hover:bg-black transition cursor-pointer"
           >
             Login
           </button>
+
+          <div className="">
+            <button
+              type="button"
+              className="w-full h-16 bg-[#403F3F] text-white text-2xl font-semibold hover:bg-black transition flex items-center gap-4 justify-center cursor-pointer" onClick={handelGoogleLogIn}
+            >
+              <BsGoogle></BsGoogle>
+              Login With Google
+            </button>
+          </div>
 
           <p className="text-center text-xl font-medium text-[#706F6F]">
             Don&apos;t Have An Account ?

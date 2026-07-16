@@ -1,3 +1,5 @@
+
+'use client'
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,8 +14,15 @@ import Swimming from "@/assets/swimming.png";
 import Class from "@/assets/class.png";
 import Playground from "@/assets/playground.png";
 import Bg from "@/assets/bg.png";
+import { authClient } from "@/lib/auth-client";
 
 const SocialSide = () => {
+  const handelGoogleLogIn = async () => {
+   const data = await authClient.signIn.social({
+     provider: "google",
+   });
+  }; 
+
   return (
     <aside className="col-span-3 space-y-8">
       {/* Login */}
@@ -21,13 +30,14 @@ const SocialSide = () => {
         <h2 className="text-2xl font-bold text-[#403F3F] mb-5">Login With</h2>
 
         <div className="space-y-3">
-          <Link
-            href="#"
-            className="border border-[#E7E7E7] rounded-md h-12 flex items-center justify-center gap-2 text-[#4285F4] font-medium hover:bg-slate-50 transition"
+          <button
+            type="button"
+            onClick={handelGoogleLogIn}
+            className="border border-[#E7E7E7] rounded-md h-12 flex items-center justify-center gap-2 text-[#4285F4] font-medium hover:bg-slate-50 transition cursor-pointer w-full"
           >
             <FaGoogle />
             Login with Google
-          </Link>
+          </button>
 
           <Link
             href="#"
