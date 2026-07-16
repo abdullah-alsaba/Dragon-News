@@ -52,7 +52,7 @@ const Navbar = () => {
         </div>
       ) : (
         <Link href="/login">
-          <button className="bg-[#403F3F] text-white px-7 py-3 font-semibold mr-16 cursor-pointer">
+          <button className="bg-[#403F3F] text-white px-7 py-3 font-semibold cursor-pointer mr-16">
             Login
           </button>
         </Link>

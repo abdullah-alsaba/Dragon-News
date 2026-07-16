@@ -14,14 +14,11 @@ import Swimming from "@/assets/swimming.png";
 import Class from "@/assets/class.png";
 import Playground from "@/assets/playground.png";
 import Bg from "@/assets/bg.png";
-import { authClient } from "@/lib/auth-client";
+import { handelGithubLogIn, handelGoogleLogIn } from "@/lib/function";
+
 
 const SocialSide = () => {
-  const handelGoogleLogIn = async () => {
-   const data = await authClient.signIn.social({
-     provider: "google",
-   });
-  }; 
+  
 
   return (
     <aside className="col-span-3 space-y-8">
@@ -33,19 +30,20 @@ const SocialSide = () => {
           <button
             type="button"
             onClick={handelGoogleLogIn}
-            className="border border-[#E7E7E7] rounded-md h-12 flex items-center justify-center gap-2 text-[#4285F4] font-medium hover:bg-slate-50 transition cursor-pointer w-full"
+            className="border-b border-[#E7E7E7] rounded-md h-12 flex items-center justify-center gap-2 text-[#4285F4] font-medium hover:bg-slate-50 transition cursor-pointer w-full"
           >
             <FaGoogle />
             Login with Google
           </button>
 
-          <Link
-            href="#"
-            className="border border-[#E7E7E7] rounded-md h-12 flex items-center justify-center gap-2 text-[#403F3F] font-medium hover:bg-slate-50 transition"
+          <button
+            type="button"
+            onClick={handelGithubLogIn}
+            className="border-b border-[#E7E7E7] rounded-md h-12 flex items-center justify-center gap-2 text-[#403F3F] font-medium hover:bg-slate-50 transition cursor-pointer w-full"
           >
             <FaGithub />
             Login with Github
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -53,10 +51,10 @@ const SocialSide = () => {
       <div>
         <h2 className="text-2xl font-bold text-[#403F3F] mb-5">Find Us On</h2>
 
-        <div className="border  border-[#E7E7E7] rounded-md overflow-hidden">
+        <div className="border-b  border-[#E7E7E7] rounded-md overflow-hidden">
           <Link
             href="#"
-            className="flex items-center gap-4 p-4 border-b-[#E7E7E7]  hover:bg-slate-50"
+            className="flex items-center gap-4 p-4 border-b border-[#E7E7E7]  hover:bg-slate-50"
           >
             <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-blue-600">
               <FaFacebookF />
@@ -66,7 +64,7 @@ const SocialSide = () => {
 
           <Link
             href="#"
-            className="flex items-center gap-4 p-4  border-b-gray-700 hover:bg-slate-50"
+            className="flex items-center gap-4 p-4  border-b border-gray-700 hover:bg-slate-50"
           >
             <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-sky-500">
               <FaTwitter />

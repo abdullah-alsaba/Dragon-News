@@ -9,15 +9,12 @@ import { Button, InputGroup } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { BsGoogle } from "react-icons/bs";
+import { handelGoogleLogIn } from "@/lib/function";
 
 const LoginPage = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const handelGoogleLogIn = async () => {
-   const data = await authClient.signIn.social({
-     provider: "google",
-   });
-  }
+ 
 
   const {
     register,
